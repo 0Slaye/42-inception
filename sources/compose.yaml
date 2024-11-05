@@ -1,3 +1,3 @@
 services:
     nginx:
-        build: ./requirements/nginx/
+        build: ./requirements/nginx/ -t nginx:1.0
