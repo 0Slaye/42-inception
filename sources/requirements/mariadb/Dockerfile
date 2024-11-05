@@ -1,1 +1,3 @@
-FROM debian:Bullseye
+FROM debian:bullseye
+
+WORKDIR /container/
