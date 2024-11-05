@@ -1,7 +1,7 @@
 default: up
 
 up:
-	@docker compose -f ./sources/docker-compose.yml up --build
+	@docker compose -f ./sources/docker-compose.yml --env-file ./secrets/.env up --build
 
 stop:
 	@docker compose -f ./sources/docker-compose.yml stop
