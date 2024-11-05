@@ -7,6 +7,8 @@ services:
             - webnet
         ports:
             - "8080:8080"
+        depends_on:
+            - wordpress
     wordpress:
         build: ./requirements/wordpress/
         container_name: wordpress
@@ -16,6 +18,8 @@ services:
         networks:
             - webnet
             - dbnet
+        depends_on:
+            - mariadb
     mariadb:
         build: ./requirements/mariadb/
         container_name: mariadb

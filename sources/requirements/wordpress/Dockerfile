@@ -1,3 +1,3 @@
-FROM wordpress:6.6
+FROM php:8.2-fpm
 
 WORKDIR /app/
