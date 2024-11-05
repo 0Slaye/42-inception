@@ -1,3 +1,3 @@
 FROM debian:bullseye
 
-WORKDIR /container/
+WORKDIR /app/

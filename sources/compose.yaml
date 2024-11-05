@@ -1,3 +1,10 @@
 services:
     nginx:
-        build: ./requirements/nginx/ -t nginx:1.0
+        build: ./requirements/nginx/
+        container_name: nginx
+    wordpress:
+        build: ./requirements/wordpress/
+        container_name: wordpress
+    mariadb:
+        build: ./requirements/mariadb/
+        container_name: mariadb
