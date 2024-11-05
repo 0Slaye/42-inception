@@ -1,13 +1,13 @@
 default: up
 
 up:
-	@docker compose -f ./sources/compose.yaml up --build
+	@docker compose -f ./sources/docker-compose.yml up --build
 
 stop:
-	@docker compose -f ./sources/compose.yaml stop
+	@docker compose -f ./sources/docker-compose.yml stop
 
 down:
-	@docker compose -f ./sources/compose.yaml down
+	@docker compose -f ./sources/docker-compose.yml down
 
 show:
 	@docker ps
