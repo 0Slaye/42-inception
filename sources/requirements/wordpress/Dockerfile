@@ -1,3 +1,5 @@
-FROM php:8.2-fpm
+FROM debian:bullseye
 
 WORKDIR /app/
+
+RUN apt-get update

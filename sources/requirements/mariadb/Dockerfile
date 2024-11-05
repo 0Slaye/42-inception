@@ -1,3 +1,5 @@
-FROM mariadb:11.5.2
+FROM debian:bullseye
 
 WORKDIR /app/
+
+RUN apt-get update
