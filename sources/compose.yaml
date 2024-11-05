@@ -3,11 +3,35 @@ services:
         build: ./requirements/nginx/
         container_name: nginx
         restart: on-failure
+        networks:
+            - webnet
+        ports:
+            - "8080:8080"
     wordpress:
         build: ./requirements/wordpress/
         container_name: wordpress
         restart: on-failure
+        volumes:
+            - ./requirements/wordpress/volume/:/var/www/html
+        networks:
+            - webnet
+            - dbnet
     mariadb:
         build: ./requirements/mariadb/
         container_name: mariadb
         restart: on-failure
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpressuser
+            MYSQL_PASSWORD: wordpresspassword
+        volumes:
+            - ./requirements/mariadb/volume/:/var/lib/mysql
+        networks:
+            - dbnet
+
+networks:
+    webnet:
+        driver: bridge
+    dbnet:
+        driver: bridge

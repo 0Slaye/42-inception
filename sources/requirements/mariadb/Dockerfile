@@ -1,3 +1,3 @@
-FROM debian:bullseye
+FROM mariadb:latest
 
 WORKDIR /app/

@@ -1,3 +1,3 @@
-FROM debian:bullseye
+FROM wordpress:latest
 
 WORKDIR /app/

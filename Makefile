@@ -1,7 +1,7 @@
 default: up
 
 up:
-	@docker compose -f ./sources/compose.yaml up
+	@docker compose -f ./sources/compose.yaml up --build
 
 stop:
 	@docker compose -f ./sources/compose.yaml stop
@@ -15,7 +15,7 @@ show:
 show-all:
 	@docker ps -a
 
-clear:
+clean:
 	@docker ps -aq | sudo xargs -r docker rm -f
 
 reset:
