@@ -2,9 +2,12 @@ services:
     nginx:
         build: ./requirements/nginx/
         container_name: nginx
+        restart: on-failure
     wordpress:
         build: ./requirements/wordpress/
         container_name: wordpress
+        restart: on-failure
     mariadb:
         build: ./requirements/mariadb/
         container_name: mariadb
+        restart: on-failure
