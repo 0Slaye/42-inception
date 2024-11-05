@@ -3,6 +3,8 @@ services:
         build: ./requirements/nginx/
         container_name: nginx
         restart: on-failure
+        volumes:
+            - ./requirements/wordpress/volume/:/var/www/html
         networks:
             - webnet
         ports:
@@ -25,10 +27,10 @@ services:
         container_name: mariadb
         restart: on-failure
         environment:
-            MYSQL_ROOT_PASSWORD: $(MYSQL_ROOT_PASSWORD)
-            MYSQL_DATABASE: $(MYSQL_DATABASE)
-            MYSQL_USER: $(MYSQL_USER)
-            MYSQL_PASSWORD: $(MYSQL_PASSWORD)
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
         volumes:
             - ./requirements/mariadb/volume/:/var/lib/mysql
         networks:
