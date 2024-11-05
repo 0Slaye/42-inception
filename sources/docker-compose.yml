@@ -21,10 +21,10 @@ services:
         container_name: mariadb
         restart: on-failure
         environment:
-            MYSQL_ROOT_PASSWORD: rootpassword
-            MYSQL_DATABASE: wordpress
-            MYSQL_USER: wordpressuser
-            MYSQL_PASSWORD: wordpresspassword
+            MYSQL_ROOT_PASSWORD: $(MYSQL_ROOT_PASSWORD)
+            MYSQL_DATABASE: $(MYSQL_DATABASE)
+            MYSQL_USER: $(MYSQL_USER)
+            MYSQL_PASSWORD: $(MYSQL_PASSWORD)
         volumes:
             - ./requirements/mariadb/volume/:/var/lib/mysql
         networks:

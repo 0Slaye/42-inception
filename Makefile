@@ -20,3 +20,6 @@ clean:
 
 reset:
 	docker stop $(docker ps -qa); docker rm $(docker ps -qa); docker rmi -f $(docker images -qa); docker volume rm $(docker volume ls -q); docker network rm $(docker network ls -q) 2>/dev/null
+
+remove-volume:
+	@rm -rf sources/requirements/mariadb/volume/ sources/requirements/wordpress/volume/

@@ -1,3 +1,3 @@
-FROM wordpress:latest
+FROM wordpress:6.6
 
 WORKDIR /app/
