@@ -4,7 +4,7 @@ services:
         container_name: nginx
         restart: on-failure
         volumes:
-            - ./requirements/wordpress/volume/:/var/www/html
+            - wordpress:/var/www/html
         networks:
             - webnet
         ports:
@@ -16,7 +16,7 @@ services:
         container_name: wordpress
         restart: on-failure
         volumes:
-            - ./requirements/wordpress/volume/:/var/www/html
+            - wordpress:/var/www/html
         networks:
             - webnet
             - dbnet
@@ -34,6 +34,14 @@ services:
             - dbnet
         env_file:
             - ../secrets/.env
+
+volumes:
+    wordpress:
+         driver: local
+         driver_opts:
+            type: none
+            device: ./requirements/wordpress/volume/
+            o: bind
 
 networks:
     webnet:
