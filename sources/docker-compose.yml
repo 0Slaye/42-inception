@@ -22,8 +22,6 @@ services:
             - dbnet
         depends_on:
             - mariadb
-        env_file:
-            - ../secrets/.env
     mariadb:
         build: ./requirements/mariadb/
         container_name: mariadb
@@ -32,8 +30,6 @@ services:
             - ./requirements/mariadb/volume/:/var/lib/mysql
         networks:
             - dbnet
-        env_file:
-            - ../secrets/.env
 
 volumes:
     wordpress:
