@@ -24,6 +24,10 @@ services:
           - "9000:9000"
         depends_on:
             - mariadb
+        environment:
+            WORDPRESS_DB_HOST: mariadb:3306
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
     mariadb:
         build: ./requirements/mariadb/
         container_name: mariadb
@@ -34,6 +38,11 @@ services:
             - dbnet
         ports:
             - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: wordpress
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
 
 volumes:
     wordpress:
