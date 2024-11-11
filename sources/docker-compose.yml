@@ -29,9 +29,11 @@ services:
         container_name: mariadb
         restart: on-failure
         volumes:
-            - ./requirements/mariadb/volume/:/var/lib/mysql
+            - mariadb:/var/lib/mysql
         networks:
             - dbnet
+        ports:
+            - "3306:3306"
 
 volumes:
     wordpress:
@@ -39,6 +41,12 @@ volumes:
          driver_opts:
             type: none
             device: ./requirements/wordpress/volume/
+            o: bind
+    mariadb:
+         driver: local
+         driver_opts:
+            type: none
+            device: ./requirements/mariadb/volume/
             o: bind
 
 networks:
