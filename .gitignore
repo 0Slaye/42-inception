@@ -1,1 +1,3 @@
 secrets/*
+sources/requirements/mariadb/volume/*
+sources/requirements/wordpress/volume/*

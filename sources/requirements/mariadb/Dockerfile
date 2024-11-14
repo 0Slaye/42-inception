@@ -2,10 +2,13 @@ FROM debian:bullseye
 
 RUN apt-get update && apt-get install -y mariadb-server
 RUN mkdir -p /run/mysqld
-RUN echo "[mysqld]" > /etc/mysql/mariadb.conf.d/50-server.cnf
-RUN echo "skip-socket" >> /etc/mysql/mariadb.conf.d/50-server.cnf
-RUN echo "bind-address=0.0.0.0" >> /etc/mysql/mariadb.conf.d/50-server.cnf
+RUN chown -R mysql:mysql /run/mysqld
+RUN chmod 755 /run/mysqld
+RUN chown -R mysql:mysql /var/lib/mysql
 
-USER mysql
+COPY ./imports/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+COPY ./imports/configure.sh /
 
-CMD [ "mysqld" ]
+RUN chmod +x /configure.sh
+
+ENTRYPOINT [ "/configure.sh" ]
