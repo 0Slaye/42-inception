@@ -11,4 +11,6 @@ COPY ./imports/configure.sh /
 
 RUN chmod +x /configure.sh
 
+USER root
+
 ENTRYPOINT [ "/configure.sh" ]
