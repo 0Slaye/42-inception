@@ -12,4 +12,4 @@ RUN chown -R www-data:www-data /run/php
 COPY ./imports/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./imports/wp-config.php /var/www/html/wp-config.php
 
-CMD [ "php-fpm7.4", "-F", "-R" ]
+ENTRYPOINT [ "php-fpm7.4", "-F", "-R" ]
