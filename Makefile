@@ -21,9 +21,8 @@ remove-volume:
 	@rm -rf sources/requirements/mariadb/volume/ sources/requirements/wordpress/volume/
 
 clean: remove-volume
-	@docker ps -aq | sudo xargs -r docker rm -f
 	@mkdir sources/requirements/mariadb/volume
 	@mkdir sources/requirements/wordpress/volume
 
 reset:
-	@docker system prune -af 
+	@docker system prune -af
