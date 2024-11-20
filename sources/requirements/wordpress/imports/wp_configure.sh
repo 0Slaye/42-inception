@@ -2,7 +2,7 @@
 echo "wp_configure.sh [10s]"
 sleep 10
 if [ ! -f "${WP_PATH}/wp-config.php" ]; then
-	echo "Creating WordPress config"
+	echo "Creating WordPress config..."
 	su -s /bin/bash www-data -c "wp-cli.phar config create --dbname=${SQL_DATABASE} --dbuser=${SQL_USER} --dbpass=${SQL_PASSWORD} --dbhost=mariadb:3306 --path=${WP_PATH}"
 else
 	echo "WordPress is already configured."
@@ -18,5 +18,12 @@ if [ $? -ne 0 ]; then
 		--admin_email=${WP_ADMIN_EMAIL}"
 else
 	echo "WordPress is already installed."
+fi
+USER_EXISTS=$(su -s /bin/bash www-data -c "wp-cli.phar user list --field=user_login --search=${WP_USER} --path=$WP_PATH")
+if [ ! "$WP_USER" == "$USER_EXISTS" ]; then
+	echo "Creating second user..."
+	su -s /bin/bash www-data -c "wp-cli.phar --path=${WP_PATH} user create ${WP_USER} ${WP_USER_EMAIL} --role=subscriber --user_pass=${WP_USER_PASSWORD}"
+else
+	echo "Second user already created."
 fi
 exec php-fpm7.4 -F -R
