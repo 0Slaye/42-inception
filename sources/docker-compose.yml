@@ -49,13 +49,13 @@ volumes:
          driver: local
          driver_opts:
             type: none
-            device: ./requirements/wordpress/volume/
+            device: /home/uwywijas/data/wordpress/
             o: bind
     mariadb:
          driver: local
          driver_opts:
             type: none
-            device: ./requirements/mariadb/volume/
+            device: /home/uwywijas/data/mariadb/
             o: bind
 
 networks:
