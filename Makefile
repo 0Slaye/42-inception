@@ -2,7 +2,7 @@ default: up
 
 up:
 	@mkdir -p /home/uwywijas/data/mariadb /home/uwywijas/data/wordpress
-	@docker compose -f ./sources/docker-compose.yml up
+	@docker compose -f ./sources/docker-compose.yml up --build
 
 stop:
 	@docker compose -f ./sources/docker-compose.yml stop
