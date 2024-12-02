@@ -1,6 +1,6 @@
 #!/bin/bash
-echo "wp_configure.sh [10s]"
-sleep 15
+echo "wp_configure.sh [20s]"
+sleep 20
 cd /var/www/wordpress
 wp core download --allow-root --path=/var/www/wordpress
 wp config create --dbname=${SQL_DATABASE} --dbuser=${SQL_USER} --dbpass=${SQL_PASSWORD} --dbhost=mariadb:3306 --allow-root --dbprefix=wp_ --path=/var/www/wordpress
