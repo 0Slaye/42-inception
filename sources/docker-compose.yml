@@ -5,6 +5,7 @@ services:
             dockerfile: Dockerfile
         env_file: ../secrets/.env
         container_name: nginx
+        image: nginx
         restart: on-failure
         volumes:
             - wordpress:/var/www/wordpress
@@ -20,6 +21,7 @@ services:
             dockerfile: Dockerfile
         env_file: ../secrets/.env
         container_name: wordpress
+        image: wordpress
         restart: on-failure
         volumes:
             - wordpress:/var/www/wordpress
@@ -35,6 +37,7 @@ services:
             dockerfile: Dockerfile
         env_file: ../secrets/.env
         container_name: mariadb
+        image: mariadb
         restart: on-failure
         volumes:
             - mariadb:/var/lib/mysql
