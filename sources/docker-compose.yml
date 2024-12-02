@@ -7,9 +7,9 @@ services:
         container_name: nginx
         restart: on-failure
         volumes:
-            - wordpress:/var/www/html
+            - wordpress:/var/www/wordpress
         networks:
-            - webnet
+            - inception
         ports:
             - "443:443"
         depends_on:
@@ -22,10 +22,9 @@ services:
         container_name: wordpress
         restart: on-failure
         volumes:
-            - wordpress:/var/www/html
+            - wordpress:/var/www/wordpress
         networks:
-            - webnet
-            - dbnet
+            - inception
         ports:
           - "9000"
         depends_on:
@@ -40,7 +39,7 @@ services:
         volumes:
             - mariadb:/var/lib/mysql
         networks:
-            - dbnet
+            - inception
         ports:
             - "3306"
 
@@ -49,17 +48,15 @@ volumes:
          driver: local
          driver_opts:
             type: none
-            device: /home/uwywijas/data/wordpress/
+            device: /home/uwywijas/data/wordpress
             o: bind
     mariadb:
          driver: local
          driver_opts:
             type: none
-            device: /home/uwywijas/data/mariadb/
+            device: /home/uwywijas/data/mariadb
             o: bind
 
 networks:
-    webnet:
-        driver: bridge
-    dbnet:
-        driver: bridge
+    inception:
+        name: inception

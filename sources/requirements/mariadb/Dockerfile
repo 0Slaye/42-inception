@@ -1,5 +1,6 @@
 FROM debian:bullseye
 
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y mariadb-server
 RUN mkdir -p /run/mysqld /var/lib/mysql
 RUN chown -R mysql:mysql /run/mysqld /var/lib/mysql

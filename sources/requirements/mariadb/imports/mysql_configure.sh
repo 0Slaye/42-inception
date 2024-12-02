@@ -8,4 +8,4 @@ mysql -u root -p${SQL_ROOT_PASSWORD} -e "GRANT ALL PRIVILEGES ON \`${SQL_DATABAS
 mysql -u root -p${SQL_ROOT_PASSWORD} -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${SQL_ROOT_PASSWORD}';"
 mysql -u root -p${SQL_ROOT_PASSWORD} -e "FLUSH PRIVILEGES;"
 mysqladmin -u root -p${SQL_ROOT_PASSWORD} shutdown
-exec mysqld
+exec mysqld --user=mysql

@@ -1,16 +1,22 @@
-default: build
+default: up
 
-start:
-	@docker compose -f ./sources/docker-compose.yml start
+up:
+	@mkdir -p /home/uwywijas/data/mariadb /home/uwywijas/data/wordpress
+	@docker compose -f ./sources/docker-compose.yml up
 
 stop:
 	@docker compose -f ./sources/docker-compose.yml stop
 
+down:
+	@docker compose -f ./sources/docker-compose.yml down
+
 build:
 	@mkdir -p /home/uwywijas/data/mariadb /home/uwywijas/data/wordpress
-	@docker compose -f ./sources/docker-compose.yml up --build
+	@docker compose -f ./sources/docker-compose.yml build
 
 fclean:
-	@docker compose -f ./sources/docker-compose.yml down -v
+	@docker compose -f ./sources/docker-compose.yml down -v --rmi all
 	@rm -rf /home/uwywijas/data/mariadb/ /home/uwywijas/data/wordpress/
 	@docker system prune -af
+
+re: fclean build up
